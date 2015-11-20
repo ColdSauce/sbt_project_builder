@@ -1,0 +1,3 @@
+Script that sets up the basic project structure for SBT Scala projects.
+
+To use: run the python script on a directory you would like to create a project for. 

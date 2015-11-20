@@ -1,0 +1,39 @@
+#!/usr/bin/python
+import os
+
+def check_files():
+	files_in_dir = [file for file in os.listdir('.')]
+	if len(files_in_dir) != 0:
+		print "WARNING! You are running this script in a non empty directory! Are you sure you want to do this? (y/n)"
+		user_input = raw_input()
+		while(user_input != "n" and user_input != "y"):
+			print "Enter either a Y or a N please!"
+			user_input = raw_input()
+		if user_input == "N":
+			exit()
+
+def make_zero_level_dir():
+	if not os.path.exists('src'):
+		os.makedirs('src')
+
+def make_main_dirs():
+	dirs = ['resources','scala','java']
+	src_joined = os.path.join('src','main')
+	paths = [os.path.join(src_joined,dir) for dir in dirs]
+	for path in paths:
+		if not os.path.exists(str(path)):
+			os.makedirs(str(path))
+
+def make_test_dirs():
+	dirs = ['resources','scala','java']
+	src_joined = os.path.join('src', 'test')
+	paths = [os.path.join(src_joined,dir) for dir in dirs]
+	for path in paths:
+		if not os.path.exists(str(path)):
+			os.makedirs(str(path))
+
+if __name__ == '__main__':
+	check_files()
+	make_zero_level_dir()
+	make_main_dirs()
+	make_test_dirs()
